@@ -1,0 +1,105 @@
+GitLab documentation home
+Docs
+Search GitLab documentation
+/
+What's new?
+On this page
+Web Editor
+Tier: Free, Premium, Ultimate
+Offering: GitLab.com, Self-managed, GitLab Dedicated
+You can use the Web Editor to make changes to a single file directly from the GitLab UI. To make changes to multiple files, see Web IDE.
+
+Your primary email address is used by default for any change you commit with the Web Editor.
+
+Create a file
+To create a text file in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Go to the directory where you want to create the new file.
+Next to the directory name, select the plus icon () > New file.
+Complete the fields. To create a merge request with your changes, enter a branch name that’s not your repository’s default branch.
+Select Commit changes.
+From a template
+To create a text file from a template in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Go to the directory where you want to create the new file.
+Next to the directory name, select the plus icon () > New file.
+In Filename, enter a name that GitLab provides a template for:
+.gitignore
+.gitlab-ci.yml
+LICENSE
+Dockerfile
+From the Apply a template dropdown list, select a template.
+Complete the fields. To create a merge request with your changes, enter a branch name that’s not your repository’s default branch.
+Select Commit changes.
+Edit a file
+To edit a text file in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Go to the file you want to edit.
+Select Edit > Edit single file.
+Complete the fields. To create a merge request with your changes, enter a branch name that’s not your repository’s default branch.
+Select Commit changes.
+Preview Markdown
+History 
+To preview a Markdown file in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Go to the file you want to preview.
+Select Edit > Edit single file.
+Select the Preview tab.
+You can see a live Markdown preview alongside your content.
+
+To close the preview panel, select the Write tab.
+
+Link to specific lines
+To link to single or multiple lines in the Web Editor, add hash information to the filename segment of the URL. For example:
+
+MY_FILE.js#L3 highlights line 3 in MY_FILE.js.
+MY_FILE.js#L3-10 highlights lines 3 to 10 in MY_FILE.js.
+When you edit a file, you can also link to a single line by selecting a line number.
+
+Upload a file
+To upload a file in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Go to the directory where you want to upload the file.
+Next to the directory name, select the plus icon () > Upload file.
+Complete the fields. To create a merge request with your changes, enter a branch name that’s not your repository’s default branch.
+Select Upload file.
+Create a directory
+To create a directory in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Go to the directory where you want to create the new directory.
+Next to the directory name, select the plus icon () > New directory.
+Complete the fields. To create a merge request with your changes, enter a branch name that’s not your repository’s default branch.
+Select Create directory.
+Create a branch
+To create a branch in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Next to the repository name, select the plus icon () > New branch.
+Complete the fields.
+Select Create branch.
+Create a tag
+You can create tags to mark milestones such as production releases and release candidates. To create a tag in the Web Editor:
+
+On the left sidebar, select Search or go to and find your project.
+Next to the repository name, select the plus icon () > New tag.
+Complete the fields.
+Select Create tag.
+ Help & feedback
+Sign in to GitLab.comSign in to GitLab.com
+Twitter
+Facebook
+YouTube
+LinkedIn
+Docs Repo
+About GitLab
+Terms
+Privacy Statement
+Cookie Preferences
+Contact
+View page source - Edit in Web IDE Creative Commons License
