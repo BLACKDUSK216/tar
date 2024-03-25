@@ -1,0 +1,273 @@
+-- MySQL dump 10.13  Distrib 8.0.35, for Linux (x86_64)
+--
+-- Host: localhost    Database: INFANION
+-- ------------------------------------------------------
+-- Server version	8.0.35-0ubuntu0.22.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `CompanyInfo`
+--
+
+DROP TABLE IF EXISTS `CompanyInfo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `CompanyInfo` (
+  `CompanyID` int NOT NULL,
+  `CompanyName` varchar(255) DEFAULT NULL,
+  `Location` varchar(255) DEFAULT NULL,
+  `IndustryType` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`CompanyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `CompanyInfo`
+--
+
+LOCK TABLES `CompanyInfo` WRITE;
+/*!40000 ALTER TABLE `CompanyInfo` DISABLE KEYS */;
+INSERT INTO `CompanyInfo` VALUES (1,'Infanion','Bengaluru','Technology'),(2,'FireSystems','Delhi','Manufacturing'),(3,'TechGuru','Mumbai','IT Services'),(4,'InnovateCorp','Hyderabad','Innovation'),(5,'DataMinds','Chennai','Data Analytics');
+/*!40000 ALTER TABLE `CompanyInfo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Employee`
+--
+
+DROP TABLE IF EXISTS `Employee`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Employee` (
+  `EmployeeID` int NOT NULL,
+  `EmployeeName` varchar(255) DEFAULT NULL,
+  `Department` varchar(255) DEFAULT NULL,
+  `Position` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`EmployeeID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Employee`
+--
+
+LOCK TABLES `Employee` WRITE;
+/*!40000 ALTER TABLE `Employee` DISABLE KEYS */;
+INSERT INTO `Employee` VALUES (1,'Aishwarya Gupta','IT','Developer'),(2,'Rahul Singh','HR','Manager'),(3,'Deepika Mishra','Finance','Accountant'),(4,'Vikram Khanna','Marketing','Coordinator'),(5,'Ananya Patel','Operations','Supervisor');
+/*!40000 ALTER TABLE `Employee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `EmployeeInventory`
+--
+
+DROP TABLE IF EXISTS `EmployeeInventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `EmployeeInventory` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `ReceivedDate` varchar(255) DEFAULT NULL,
+  `ReturnDate` varchar(255) DEFAULT NULL,
+  `EmployeeName` varchar(255) DEFAULT NULL,
+  `ItemName` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `EmployeeInventory`
+--
+
+LOCK TABLES `EmployeeInventory` WRITE;
+/*!40000 ALTER TABLE `EmployeeInventory` DISABLE KEYS */;
+INSERT INTO `EmployeeInventory` VALUES (2,'2024-03-15',NULL,'Aishwarya Gupta','Monitor'),(3,'2024-03-29','2024-04-07','Vikram Khanna','Laptop'),(4,'2024-03-22',NULL,'Deepika Mishra','Laptop'),(5,'2024-03-16','2024-03-22','Rahul Singh','Mouse'),(6,'2024-03-16','2024-03-16','Ananya Patel','Printer'),(8,'2024-03-15','2024-03-21','Aishwarya Gupta','Monitor'),(9,'2024-03-08',NULL,'Ananya Patel','Monitor'),(11,'2024-03-20',NULL,'Aishwarya Gupta','Mouse'),(14,'2024-03-09',NULL,'Rahul Singh','Laptop');
+/*!40000 ALTER TABLE `EmployeeInventory` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = latin1 */ ;
+/*!50003 SET character_set_results = latin1 */ ;
+/*!50003 SET collation_connection  = latin1_swedish_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`php_projects`@`localhost`*/ /*!50003 TRIGGER `updateUnreturnedItems` AFTER INSERT ON `EmployeeInventory` FOR EACH ROW BEGIN
+    IF NEW.ReturnDate IS NULL THEN
+        INSERT INTO UnreturnedItems (EmployeeID, EmployeeName, ItemID, ItemName, ReturnStatus)
+        VALUES (
+            (SELECT EmployeeID FROM Employee WHERE EmployeeName = NEW.EmployeeName),
+            NEW.EmployeeName,
+            (SELECT ItemID FROM Inventory WHERE ItemName = NEW.ItemName),
+            NEW.ItemName,
+            'Did Not Return'
+        );
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `Inventory`
+--
+
+DROP TABLE IF EXISTS `Inventory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Inventory` (
+  `ItemID` int NOT NULL AUTO_INCREMENT,
+  `ItemName` varchar(255) DEFAULT NULL,
+  `QuantityAvailable` int DEFAULT NULL,
+  `UnitPrice` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`ItemID`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Inventory`
+--
+
+LOCK TABLES `Inventory` WRITE;
+/*!40000 ALTER TABLE `Inventory` DISABLE KEYS */;
+INSERT INTO `Inventory` VALUES (1,'Laptop',100,799.99),(2,'Printer',50,199.99),(3,'Monitor',75,299.99),(4,'Mouse',200,19.99),(5,'Keyboard',150,29.99);
+/*!40000 ALTER TABLE `Inventory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `InventoryDetails`
+--
+
+DROP TABLE IF EXISTS `InventoryDetails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `InventoryDetails` (
+  `TransactionID` int NOT NULL,
+  `ItemID` int DEFAULT NULL,
+  `VendorID` int DEFAULT NULL,
+  `TransactionDate` date DEFAULT NULL,
+  `QuantityPurchased` int DEFAULT NULL,
+  `TotalCost` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`TransactionID`),
+  KEY `VendorID` (`VendorID`),
+  KEY `InventoryDetails_ibfk_1` (`ItemID`),
+  CONSTRAINT `InventoryDetails_ibfk_1` FOREIGN KEY (`ItemID`) REFERENCES `Inventory` (`ItemID`),
+  CONSTRAINT `InventoryDetails_ibfk_2` FOREIGN KEY (`VendorID`) REFERENCES `Vendors` (`VendorID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `InventoryDetails`
+--
+
+LOCK TABLES `InventoryDetails` WRITE;
+/*!40000 ALTER TABLE `InventoryDetails` DISABLE KEYS */;
+INSERT INTO `InventoryDetails` VALUES (1,1,1,'2024-03-06',10,7999.90),(2,2,3,'2024-03-07',5,999.95),(3,3,2,'2024-03-08',8,2399.92),(4,4,5,'2024-03-09',15,299.85),(5,5,4,'2024-03-10',20,599.80);
+/*!40000 ALTER TABLE `InventoryDetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UnreturnedItems`
+--
+
+DROP TABLE IF EXISTS `UnreturnedItems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `UnreturnedItems` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `EmployeeID` int DEFAULT NULL,
+  `EmployeeName` varchar(255) DEFAULT NULL,
+  `ItemID` int DEFAULT NULL,
+  `ItemName` varchar(255) DEFAULT NULL,
+  `ReturnStatus` varchar(255) DEFAULT 'Did Not Return',
+  PRIMARY KEY (`id`),
+  KEY `UnreturnedItems_ibfk_1` (`EmployeeID`),
+  KEY `UnreturnedItems_ibfk_2` (`ItemID`),
+  CONSTRAINT `UnreturnedItems_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `Employee` (`EmployeeID`),
+  CONSTRAINT `UnreturnedItems_ibfk_2` FOREIGN KEY (`ItemID`) REFERENCES `Inventory` (`ItemID`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UnreturnedItems`
+--
+
+LOCK TABLES `UnreturnedItems` WRITE;
+/*!40000 ALTER TABLE `UnreturnedItems` DISABLE KEYS */;
+INSERT INTO `UnreturnedItems` VALUES (6,1,'Aishwarya Gupta',1,'Laptop','Did Not Return'),(10,1,'Aishwarya Gupta',5,'Keyboard','Did Not Return'),(11,1,'Aishwarya Gupta',2,'Printer','Did Not Return'),(13,2,'Rahul Singh',3,'Monitor','Did Not Return'),(16,1,'Aishwarya Gupta',4,'Mouse','Did Not Return'),(19,2,'Rahul Singh',2,'Printer','Did Not Return'),(20,2,'Rahul Singh',1,'Laptop','Did Not Return');
+/*!40000 ALTER TABLE `UnreturnedItems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Vendors`
+--
+
+DROP TABLE IF EXISTS `Vendors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `Vendors` (
+  `VendorID` int NOT NULL,
+  `VendorName` varchar(255) DEFAULT NULL,
+  `ContactPerson` varchar(255) DEFAULT NULL,
+  `ContactNumber` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`VendorID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Vendors`
+--
+
+LOCK TABLES `Vendors` WRITE;
+/*!40000 ALTER TABLE `Vendors` DISABLE KEYS */;
+INSERT INTO `Vendors` VALUES (1,' Raj Enterprises','Rajesh Kumar','123-456-7890'),(2,'Sita Tech Solutions','Sita Verma','987-654-3210'),(3,'Mohan Suppliers','Mohan Singh','555-123-4567'),(4,'Sara Electronics','Sarath Chandra','789-012-3456'),(5,'Krishna IT Services','Krishna Chandrashekar','321-456-7895');
+/*!40000 ALTER TABLE `Vendors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'admin','$2y$12$VV6N/60W73eEkPxyCwaAE.E/obzYsdilXMVtMUv8pqUsYcrqINvlO'),(2,'tariq','$2y$12$B8bn76/XfBHtqPC3aG2C6eL7DpLBRDXePpDXNtn2by/hQFFk3EIt2');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-03-15 11:22:22
