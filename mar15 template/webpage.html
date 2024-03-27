@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>March 15 Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,8 +13,8 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container mx-6">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
             <a class="navbar-brand text-light" href="#">Lorem</a>
 
             <!-- Navbar items -->
@@ -43,13 +44,15 @@
     </nav>
 <!-- Background image container -->
 <!-- Carousel -->
-<div id="demo" class="carousel slide" data-bs-ride="carousel">
+<div class="container carousel-container">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
       <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
       <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
     </div>
     
+    <div class="container-carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img src="images/pexels-lukas-574071.jpg" alt="image1" class="carousel-image img-fluid">
@@ -68,6 +71,9 @@
       <span class="carousel-control-next-icon"></span>
     </button>
   </div>
+</div>
+</div>
+  
   
 <!-- about-us container -->
 <div class="about-us py-5">
@@ -80,9 +86,10 @@
             </div>
             <div class="col-md-7 mt-4">
                 <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, ab voluptate. Iste maxime incidunt expedita asperiores eaque nisi, ullam commodi provident, dolorum ipsam cum? Debitis beatae et corrupti odit veniam.</p>
-                <div>
+                <div class="about-button">
                     <button class="btn btn-primary button-hover mt-4">Lorem Ipsum</button>
-                </div>            </div>
+                </div>            
+            </div>
         </div>
     </div>
 </div>
@@ -92,7 +99,7 @@
     <div class="container">
         <h2 class="mb-3">Gallery</h2>
         <div class="row">
-            <div class="col-md-4 image-container">
+            <div class="col-md-4 image-container img">
                 <img src="images/Rectangle 7486@2x.png" class="img-fluid" alt="Image 1">
                 <div class="overlay-text">
                     <h3 class="text-white">Lorem Ipsum</h3>
@@ -100,7 +107,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4 image-container">
+            <div class="col-md-4 image-container img">
                 <img src="images/Rectangle 7486-1@2x.png" class="img-fluid-2" alt="Image 2" id="second-image">
                 <div class="bg-text"></div>
                 <div class="overlay-text2">
@@ -109,7 +116,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4 image-container">
+            <div class="col-md-4 image-container img">
                 <img src="images/Rectangle 7486-2@2x.png" class="img-fluid third-image" alt="Image 3">
                 <div class="image-overlay"></div>
                 <div class="overlay-text3">
@@ -118,7 +125,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4 image-container">
+            <div class="col-md-4 image-container img">
                 <img src="images/Rectangle 7488@2x.png" class="img-fluid" alt="Image 4">
                 <div class="image-overlay"></div>
                 <div class="overlay-text">
@@ -127,7 +134,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4 image-container">
+            <div class="col-md-4 image-container img">
                 <img src="images/Rectangle 7487@2x.png" class="img-fluid-2" alt="Image 5" id="second-image">
                 <div class="image-overlay"></div>
                 <div class="overlay-text2">
@@ -136,7 +143,7 @@
 
                 </div>
             </div>
-            <div class="col-md-4 image-container">
+            <div class="col-md-4 image-container img">
                 <img src="images/Rectangle 7489@2x.png" class="img-fluid third-image" alt="Image 6">
                 <div class="image-overlay"></div>
                 <div class="overlay-text3">
@@ -145,7 +152,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center">
+        <div class="text-center ">
             <button class="btn btn-primary button-hover">Lorem Ipsum</button>
         </div>
     </div>
@@ -289,7 +296,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores assumenda, minu
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
