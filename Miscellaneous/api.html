@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        #addProductForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Catalog</h1>
+    <div id="addProductForm">
+        <h2>Add New Product</h2>
+        <form id="productForm">
+            <label for="title">Title:</label>
+            <input type="text" id="title" required>
+            <label for="description">Description:</label>
+            <input type="text" id="description" required>
+            <label for="price">Price:</label>
+            <input type="number" id="price" required>
+            <label for="thumbnail">Thumbnail URL:</label>
+            <input type="text" id="thumbnail" required>
+            <button type="submit">Add/Edit Product</button>
+            <button type="button" id="cancelBtn">Cancel</button>
+        </form>
+    </div>
+    <button id="addProductBtn">Add New Product</button>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Thumbnail</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="productTableBody">
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const addProductBtn = document.getElementById('addProductBtn');
+            const addProductForm = document.getElementById('addProductForm');
+            const productTableBody = document.getElementById('productTableBody');
+            const cancelBtn = document.getElementById('cancelBtn');
+            const productForm = document.getElementById('productForm');
+            let products = [];
+            let editedProductId = null;
+
+            function fetchProductData() {
+                fetch('https://dummyjson.com/products')
+                    .then(response => response.json())
+                    .then(data => {
+                        products = data.products;
+                        renderProducts();
+                    })
+                    .catch(error => console.error('Error fetching product data:', error));
+            }
+
+            function renderProducts() {
+                productTableBody.innerHTML = products.map(product => `
+                    <tr>
+                        <td>${product.id}</td>
+                        <td>${product.title}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                        <td><img src="${product.thumbnail}" alt="${product.title}"></td>
+                        <td>
+                            <button class="edit-btn" data-id="${product.id}">Edit</button>
+                            <button class="delete-btn" data-id="${product.id}">Delete</button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            function toggleAddProductForm() {
+                addProductForm.style.display = addProductForm.style.display === 'none' ? 'block' : 'none';
+                clearAddProductForm();
+            }
+
+            function clearAddProductForm() {
+                productForm.reset();
+                editedProductId = null;
+            }
+
+            function addOrUpdateProduct() {
+                const title = document.getElementById('title').value;
+                const description = document.getElementById('description').value;
+                const price = parseFloat(document.getElementById('price').value);
+                const thumbnail = document.getElementById('thumbnail').value;
+
+                if (!title || !description || isNaN(price) || !thumbnail) {
+                    alert('Please fill in all fields.');
+                    return;
+                }
+
+                const index = editedProductId ? products.findIndex(product => product.id === editedProductId) : -1;
+
+                if (index !== -1) {
+                    products[index] = { id: editedProductId, title, description, price, thumbnail };
+                } else {
+                    products.push({ id: products.length + 1, title, description, price, thumbnail });
+                }
+
+                renderProducts();
+                clearAddProductForm();
+            }
+
+            function editProduct(id) {
+                const product = products.find(product => product.id === id);
+                if (product) {
+                    document.getElementById('title').value = product.title;
+                    document.getElementById('description').value = product.description;
+                    document.getElementById('price').value = product.price;
+                    document.getElementById('thumbnail').value = product.thumbnail;
+                    editedProductId = id;
+                    addProductForm.style.display = 'block';
+                }
+            }
+
+            function deleteProduct(id) {
+                products = products.filter(product => product.id !== id);
+                renderProducts();
+            }
+
+            addProductBtn.addEventListener('click', toggleAddProductForm);
+            cancelBtn.addEventListener('click', function() {
+                addProductForm.style.display = 'none';
+            });
+            productForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                addOrUpdateProduct();
+            });
+            productTableBody.addEventListener('click', function(event) {
+                if (event.target.classList.contains('edit-btn')) {
+                    const productId = parseInt(event.target.dataset.id);
+                    editProduct(productId);
+                } else if (event.target.classList.contains('delete-btn')) {
+                    const productId = parseInt(event.target.dataset.id);
+                    deleteProduct(productId);
+                }
+            });
+
+            fetchProductData();
+        });
+    </script>
+</body>
+</html>

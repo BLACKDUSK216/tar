@@ -1,12 +1,30 @@
+.container {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .outer-circle {
     height: 400px;
     width: 400px;
     background-color: #fff;
     position: absolute;
-    top: 10%;
-    left: 32%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 10px dashed black;
-    border-radius: 500px;
+    border-radius: 50%;
 }
 
 .middle-circle {
@@ -14,10 +32,11 @@
     width: 300px;
     background-color: #fff;
     position: absolute;
-    top: 10%;
-    left: 10%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 10px dashed black;
-    border-radius: 500px;
+    border-radius: 50%;
 }
 
 .last-circle {
@@ -25,31 +44,49 @@
     width: 200px;
     background-color: #fff;
     position: absolute;
-    top: 13%;
-    right: 14%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 10px dashed black;
-    border-radius: 500px;
+    border-radius: 50%;
 }
 
-.circle-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    position: absolute;
+@keyframes moveClockwise {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(190px) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(190px) rotate(-360deg);
+    }
+}
+
+@keyframes moveAntiClockwise {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(140px) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg) translateX(140px) rotate(360deg);
+    }
+}
+
+@keyframes moveClockwiseFast {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) translateX(90px) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg) translateX(90px) rotate(-360deg);
+    }
 }
 
 .circle-image1 {
-    top: -20px;
-    left: calc(50% - 20px);
-
+    animation: moveClockwise 8s linear infinite;
 }
 
 .circle-image2 {
-    top: calc(50% - 20px);
-    left: -20px;
+    animation: moveAntiClockwise 6s linear infinite;
 }
 
 .circle-image3 {
-    top: calc(100% - 20px);
-    right: calc(50% - 20px);
+    animation: moveClockwiseFast 4s linear infinite;
 }
+

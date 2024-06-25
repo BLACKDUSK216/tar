@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Route Showcase</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+    .map-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* Aspect ratio for a 16:9 ratio */
+      background-image: url('images/map.jpg'); /* Replace with your map image */
+      background-size: cover;
+      background-position: center;
+    }
+    .pin {
+      position: absolute;
+      width: 30px; /* Adjust size of pin icon as needed */
+      height: 30px;
+      background-image: url('images/location-dot-solid.svg'); /* Replace with your pin icon */
+      background-size: contain;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    .pin:hover {
+      transform: scale(1.2); /* Increase size on hover */
+    }
+    /* Popup styles */
+    .pin:hover + .popup {
+      display: block;
+    }
+    .popup1 {
+      display: none;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      top: 20;
+      left: 50%;
+      transform: translateX(-100%);
+    }
+    .popup2 {
+      display: none;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      top: 20;
+      left: 50%;
+      transform: translateX(-100%);
+    }    .popup3 {
+      display: none;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      top: 20;
+      left: 50%;
+      transform: translateX(-100%);
+    }    .popup4 {
+      display: none;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      top: 20;
+      left: 50%;
+      transform: translateX(-100%);
+    }    .popup5 {
+      display: none;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      top: 20;
+      left: 50%;
+      transform: translateX(-100%);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="map-container">
+        <!-- Pins -->
+        <div class="pin" style="top: 25%; left: 40%;"></div>
+        <div class="pin" style="top: 50%; left: 60%;"></div>
+        <div class="pin" style="top: 50%; left: 80%;"></div>
+        <div class="pin" style="top: 20%; left: 80%;"></div>
+        <div class="pin" style="top: 30%; left: 90%;"></div>
+        
+        <!-- Popups -->
+        <div class="popup1" style="top: 20%; left: 38%;">Location 1 Details</div>
+        <div class="popup2" style="top: 45%; left: 58%;">Location 2 Details</div>
+        <div class="popup3" style="top: 48%; left: 78%;">Location 3 Details</div>
+        <div class="popup4" style="top: 15%; left: 78%;">Location 4 Details</div>
+        <div class="popup5" style="top: 25%; left: 88%;">Location 5 Details</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

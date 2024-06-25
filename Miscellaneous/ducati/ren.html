@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Twos from Array</title>
+</head>
+<body>
+    <h2>Remove Twos from Array</h2>
+    <label for="numbers">Enter an array of numbers separated by commas:</label>
+    <input type="text" id="numbers">
+    <button onclick="removeTwos()">Remove Twos</button>
+    <p id="result"></p>
+
+    <script>
+function removeTwos() {
+    var inputString = document.getElementById("numbers").value;
+    var inputArray = inputString.replace(/[\[\]]/g, '').split(','); 
+    var outputArray = [];
+
+    for (var i = 0; i < inputArray.length; i++) {
+        var number = inputArray[i].trim();
+        if (number.includes('2')) {
+            var sanitizedNumber = number.replace(/2/g, '');
+            if (sanitizedNumber !== '') {
+                outputArray.push(sanitizedNumber);
+            }
+        } else if (parseInt(number) !== 2) {
+            outputArray.push(number);
+        }
+    }
+
+    var output = outputArray.join(', ');
+    if (inputString.startsWith('[') && inputString.endsWith(']')) { 
+        output = '[' + output + ']';
+    }
+
+    document.getElementById("result").innerText = "Resulting array without twos: " + output;
+}
+
+
+    </script>
+</body>
+</html>
