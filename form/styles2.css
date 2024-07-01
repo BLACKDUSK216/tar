@@ -1,0 +1,87 @@
+body {
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #20293a;
+  overflow: auto;
+  color: #fff;
+}
+.card {
+  background-color: #416287;
+}
+.form {
+  margin-bottom: 30px;
+  padding: 50px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="date"],
+input[type="tel"]{
+  padding: 8px;
+  width: 94%;
+  border: 1px solid #416287;
+  border-radius: 20px;
+  background-color: #20293a;
+  color: #fff;
+}
+input[type="tel"]{
+  width: 111%;
+}
+.form-control1{
+  padding: 8px;
+  width: 94%;
+  border: 1px solid #416287;
+  border-radius: 20px;
+  background-color: #20293a;
+  color: #fff;
+  resize: none; 
+}
+
+textarea::placeholder {
+  color: #fff;
+} 
+
+.form-group textarea:focus {
+  border-color: #20293a; 
+  background-color: #20293a;
+  color: #fff;
+}
+
+
+.form-group input::placeholder {
+  color: #fff; 
+}
+.form-group label::after {
+  content: '*';
+  color: red;
+  margin-left: 5px;
+}
+.link{
+  color: #fff !important;
+}
+.error{
+  color: red;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(0, 128, 0, 0.8);
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+
+.iti__country-list .iti__country {
+  background-color: white;
+  color: #20293a;
+}
