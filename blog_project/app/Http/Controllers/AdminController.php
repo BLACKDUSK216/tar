@@ -60,4 +60,15 @@ public function feedback()
         return view('admin.feedback', ['feedbacks' => $feedbacks]);
     }
 
+    public function blogs()
+    {
+        $blogs = DB::table('blogs')->get();
+        return view('admin.blogs', ['blogs' => $blogs]);
+    }
+    public function comments()
+    {
+        $comments = DB::table('comments')->get();
+        return view('admin.comments', ['comments' => $comments]);
+    }
+
 }

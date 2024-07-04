@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use App\Models\SessionLog;
 
 class UserController extends Controller
 {
@@ -27,19 +27,31 @@ class UserController extends Controller
         }
     
         if (Hash::check($password, $user->password)) {
-            session(['user_id' => $user->id]); // Store user_id in session
+            $sessionLog = new SessionLog();
+            $sessionLog->user_id = $user->id;
+            $sessionLog->user_agent = $request->header('User-Agent');
+            $sessionLog->ip_address = $request->ip(); 
+            $sessionLog->login_time = now();
+            $sessionLog->cookie_id = $request->cookie('user_id');
+            $sessionLog->save();
+            if (!session()->has('user_id')) {
+                session(['user_id' => $user->id]);
+                session(['user_name' => $user->name]);
+            }
+            $minutes = 60 * 24 * 30;
+            cookie()->queue(cookie('user_id', $user->id, $minutes));
+            cookie()->queue(cookie('user_name', $user->name, $minutes));
             if ($user->email === 'admin@example.com') {
                 return redirect()->route('admin.dashboard')->with('message', 'Login successful');
             } else {
-                return view('user_dashboard', [
-                    'username' => $user->name, // Pass the username to the view
+                return view('user.user_dashboard', [
+                    'username' => $user->name, 
                 ]);
             }
         } else {
             return redirect('/login')->with('message', 'Incorrect password');
         }
     }
-    
     
     public function showRegistrationForm()
     {
@@ -66,7 +78,27 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        return redirect()->route('login')->with('message', 'Registration successful, please login');
+        return redirect()->route('login')->with('message1', 'Registration successful, please login');
     }
-    
+
+    public function logout(Request $request)
+    {
+        if (session()->has('user_id')) {
+            $userId = session('user_id');
+
+            $sessionLog = SessionLog::where('user_id', $userId)
+                ->orderByDesc('login_time')
+                ->first();
+
+            if ($sessionLog) {
+                $sessionLog->logout_time = now();
+                $sessionLog->save();
+            }
+            session()->forget(['user_id', 'user_name']);
+            cookie()->queue(cookie()->forget('user_id'));
+            cookie()->queue(cookie()->forget('user_name'));
+        }
+
+        return redirect('/login')->with('message', 'Logged out successfully');
+    }
 }

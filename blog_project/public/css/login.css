@@ -204,68 +204,46 @@ body, html {
     padding-top: 60px;
 }
 
-/* Modal Content */
-.modal-content {
-    background-color: #fff;
-    margin: 5% auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 500px;
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
 }
 
-/* Close Button */
+.modal-content {
+    background-color: #fefefe;
+    margin:-3% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    transform: translateY(-200%);
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show-modal {
+    transform: translateY(0);
+}
+
 .close {
     color: #aaa;
     float: right;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: bold;
-    transition: color 0.3s ease;
+    cursor: pointer;
 }
+
 .close:hover,
 .close:focus {
-    color: #555;
+    color: black;
     text-decoration: none;
-    cursor: pointer;
-}
-.signup-btn button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 8px;
 }
 
-.signup-btn button:hover {
-    background-color: #45a049;
-}
-
-
-/* Social Buttons */
-.social-btn {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-.social-btn a {
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    border-radius: 24px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
 
 /* Input Fields */
 .modal-content input[type="text"],

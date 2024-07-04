@@ -41,6 +41,11 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 Route::get('/admin/tracking', [AdminController::class, 'tracking'])->name('admin.tracking');
 Route::get('/admin/employee', [AdminController::class, 'employee'])->name('admin.employee');
 Route::get('/admin/feedback', [AdminController::class, 'feedback'])->name('admin.feedback');
+Route::get('/admin/blogs', [AdminController::class, 'blogs'])->name('admin.blogs');
+Route::get('/admin/comments', [AdminController::class, 'comments'])->name('admin.comments');
+
+
+
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
@@ -51,7 +56,8 @@ Route::get('/user_dashboard',function(){return view('user_dashboard');})->name('
 
 
 Route::get('login/{provider}', [SocialAuthController::class, 'redirectToProvider'])->name('social.login');
-Route::get('login/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])->name('social.callback');
+Route::get('login/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback']);
+
 
 
 Route::get('/blogvault', [BlogVault::class, 'route'])->name('blogvault');

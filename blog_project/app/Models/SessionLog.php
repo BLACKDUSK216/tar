@@ -5,16 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class SessionLog extends Model
 {
     use HasFactory;
 
-    protected $table = 'blogs';
-
     protected $fillable = [
-        'title',
-        'content',
-        'file',
-        'user_id'
+        'user_id',
+        'user_agent',
+        'ip_address',
+        'login_time',
+        'logout_time',
+        'cookie_id',
+        'activity', 
     ];
+
 }
