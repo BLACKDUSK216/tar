@@ -12,8 +12,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\SocialAuthController;
 use App\Http\Controllers\BlogVault;
 use App\Http\Controllers\LogoutController;
+use Filament\Http\Controllers\DashboardController;
 
-Route::get('/', function() {
+
+Route::get('/', function () {
     return view('index');
 })->name('home');
 
@@ -41,17 +43,33 @@ Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users
 Route::get('/admin/tracking', [AdminController::class, 'tracking'])->name('admin.tracking');
 Route::get('/admin/employee', [AdminController::class, 'employee'])->name('admin.employee');
 Route::get('/admin/feedback', [AdminController::class, 'feedback'])->name('admin.feedback');
+Route::get('/admin/blogs', [AdminController::class, 'blogs'])->name('admin.blogs');
+Route::get('/admin/comments', [AdminController::class, 'comments'])->name('admin.comments');
+Route::get('/admin/bookings', [AdminController::class, 'showBookings'])->name('admin.bookings');
+Route::post('/admin/bookings', [AdminController::class, 'store'])->name('admin.bookings.store');
+Route::get('/admin/bookings/{booking_id}/edit', [AdminController::class, 'edit'])->name('admin.bookings.edit');
+Route::put('/admin/bookings/{booking_id}', [AdminController::class, 'update'])->name('admin.bookings.update');
+Route::delete('/admin/bookings/{booking_id}', [AdminController::class, 'destroy'])->name('admin.bookings.destroy');
+
+
+
 
 Route::get('/login', [UserController::class, 'index'])->name('login');
 Route::post('/login', [UserController::class, 'login'])->name('login.submit');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [UserController::class, 'register'])->name('register.submit');
-Route::get('/user_dashboard',function(){return view('user_dashboard');})->name('user.login');
+Route::get('/user_dashboard', function () {
+    return view('user_dashboard');
+})->name('user.login');
+Route::get('/check-email', [UserController::class, 'checkEmail'])->name('check.email');
+Route::get('/user_blogs', [UserController::class, 'user_blogs'])->name('user.user_blogs');
+
 
 
 Route::get('login/{provider}', [SocialAuthController::class, 'redirectToProvider'])->name('social.login');
-Route::get('login/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback'])->name('social.callback');
+Route::get('login/{provider}/callback', [SocialAuthController::class, 'handleProviderCallback']);
+
 
 
 Route::get('/blogvault', [BlogVault::class, 'route'])->name('blogvault');
@@ -60,3 +78,12 @@ Route::get('/blogvault', [BlogVault::class, 'index'])->name('blogvault');
 Route::get('/user_dashboard', function () {
     return view('user_dashboard');
 })->name('user_dashboard');
+
+
+
+Route::get('/user/blogs', [UserController::class, 'user_blogs'])->name('user.user_blogs');
+Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::post('/blog/store', [BlogController::class, 'saveBlog'])->name('blog.store');
+Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::put('/blog/{id}/update', [BlogController::class, 'update'])->name('blog.update');
+Route::delete('/blog/{id}/delete', [BlogController::class, 'delete'])->name('blog.delete');

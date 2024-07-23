@@ -25,5 +25,8 @@
             <button type="submit">Register</button>
         </div>
     </form>
+
+    @include('includes.footer')
+
 </body>
 </html>

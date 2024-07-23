@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +9,12 @@
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 
 </head>
+
 <body>
     <div class="sidebar">
         <h2>User Dashboard</h2>
         <ul>
-            <h3>Welcome, {{ $username }}!</h3> 
+            <h3>Welcome, {{ $username }}!</h3>
             <li><a href="#">Profile</a></li>
             <li><a href="#">Bookings</a></li>
             <li><a href="#">Payments</a></li>
@@ -73,7 +75,7 @@
                 date.setTime(date.getTime() + (minutes * 60 * 1000));
                 expires = "; expires=" + date.toUTCString();
             }
-            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
         }
 
         function getCookie(name) {
@@ -87,11 +89,11 @@
             return null;
         }
 
-        function eraseCookie(name) {   
-            document.cookie = name + '=; Max-Age=-99999999;';  
+        function eraseCookie(name) {
+            document.cookie = name + '=; Max-Age=-99999999;';
         }
 
-        var checkInterval = setInterval(function() {
+        var checkInterval = setInterval(function () {
             if (getCookie('user_id')) {
                 setCookie('user_id', getCookie('user_id'), 30);
             } else {
@@ -104,4 +106,5 @@
         }, 9000000); 
     </script>
 </body>
+
 </html>

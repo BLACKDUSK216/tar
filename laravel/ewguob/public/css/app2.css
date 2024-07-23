@@ -1,145 +1,27 @@
-body{
-    color: white !important;
-    background-color: #101821;
- }
- .navbar-brand img {
-     height: 50px;
-     width: 50px;
-     border-radius: 10px;
- }
- .nav-container{
-     margin: 0 auto;
-     width: 89%;
-     background-color: rgba(0, 0, 0, 0.1);
- 
- }
- .nav-item{
-     margin-top: 10px;
- }
- .navbar-nav .nav-link {
-     color: white !important; 
-     
-   }
-
-   .navbar-white {
-     background-color: #343a40 !important;
-     color: #101821 !important;
-     transition: background-color 0.1s ease, color 0.1s ease;
- }
- .navbar-white .navbar-nav .nav-link {
-     color: #fff !important;
-     /* border-bottom: 2px solid #fff; */
- 
- }
- .navbar-nav .nav-link.active {
-     border-bottom: 2px solid #343a40;
-     font-size: 30px;
-     font-family: cursive;
- }
-   .parallax-image {
-         height: 600px;
-         background-size: cover;
-         background-position: center;
-         background-repeat: no-repeat;
-         background-attachment: fixed; 
-       }
-   
-   .parallax-div {
-       background-attachment: fixed;
-   }
-   .rounded-circles{
-       height: 300px;
-       width: 100%;
-   }
-   .rounded-circle{
-     height: 600px;
-     width: 100%;
- }
-   .rounded-circles:hover{
-     position: relative;
-     bottom: 5px;
-   }
-   .image-container {
-     position: relative;
-     overflow: hidden;
-     transition: transform 0.3s ease;
- }
- 
- .image-overlay {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100%;
-     height: 100%;
-     background-color: rgba(0, 0, 0, 0.2);
-     opacity: 0;
-     transition: opacity 0.5s;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
- 
- .overlay-text {
-     color: white;
-     font-size: 18px;
-     text-align: center;
-     display: none;
- }
- 
- .image-container:hover .image-overlay {
-     opacity: 1;
- }
- 
- .image-container:hover .overlay-text {
-     display: block;
- }
- .image-container img{
-     height: 390px;
-     width: 100%;
- }
- .image-container:hover{
-     transform: scale(1.05);
- }
- #contact-section {
-     background-color: #ffffff;
-     color: black;
- }
- .navbar-white {
-    background-color: #343a40 !important;
-    color: black !important;
-    transition: background-color 0.1s ease, color 0.1s ease;
-}
-.navbar-white .navbar-nav .nav-link {
-    color: #fff  !important;
-    /* border-bottom: 2px solid #fff; */
-
+body {
+  background-color: #101821;
+  color: white !important;
 }
 
-
-
-body{
-    background-color:#101821 ;
-    color: white !important;
-  }
-  .navbar-brand img {
+.navbar-brand img {
   height: 50px;
   width: 50px;
   border-radius: 5px;
-  }
-  
-  .nav-container {
+}
+
+.nav-container {
   margin: 0 auto;
   width: 89%;
   background-color: rgba(0, 0, 0, 0.1);
-  }
-  
-  .navbar-nav .nav-link {
-  color: white !important; 
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
   position: relative;
   overflow: hidden;
-  }
-  
-  .navbar-nav .nav-link::before {
+}
+
+.navbar-nav .nav-link::before {
   content: '';
   position: absolute;
   top: 0;
@@ -147,217 +29,116 @@ body{
   width: 0%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.3);
-  transition: width 0.3s ease; 
+  transition: width 0.3s ease;
   border-radius: 2px;
+}
 
-  }
-  
-  .navbar-nav .nav-link:hover::before {
-  width: 100%; 
-  }
-  
-  .navbar-nav .nav-link:hover {
-  color: black; 
-  }
-  
-  
-  
-  #hero-div {
-    position: relative;
-    overflow: hidden;
-    height: 100vh;
-  }
-  
-  #hero-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-  }
-  
-  #hero-div .hero-content {
-  position: relative;
-  top: 150px;
-  z-index: 1;
-  font-weight: bolder;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.0);
-  }
-  
-  #hero-div .hero-content .btn-outline-light span {
-  text-shadow: none;
-  }
-  
-  
-  
-  #hero-div h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  
-  #hero-div p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  #hero-div .btn-primary {
-    font-size: 1.2rem;
-  }
-  .img-fluid{
-  max-width: 100%;
+.navbar-nav .nav-link:hover::before {
+  width: 100%;
+}
+
+.navbar-nav .nav-link:hover {
+  color: black;
+}
+
+.parallax-div {
+  background-attachment: fixed;
+}
+
+.rounded-circle {
+  height: 350px;
+  width: 250px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  }
-  
-  #about-me-div {
-    padding: 50px 0;
-    color: white;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  #about-me-div .about-me-content {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 30px;
-    border-radius: 10px;
-    position: relative;
-    z-index: 1;
-  }
-  
-  #about-me-div img {
-    border-radius: 50%;
-    margin-bottom: 10px;
-  }
-  
-  #about-me-div.parallax-div {
-    background-image: url('../images/paris.jpg'); 
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  .rounded-circle {
-    height: 350px;
-    width: 250px;
-  }
-  
-  .card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .card-body {
-    flex: 1;
-  }
-  
-  .card-img-top {
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  #blogs-div.parallax-div {
-    background-image: url('../images/japan2.jpg');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+  flex: 1;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  display: none;
+}
+
+.image-container:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-container:hover .overlay-text {
+  display: block;
+}
+
+.image-container img {
+  height: 390px;
+  width: 100%;
+}
+
+.image-container:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
   #gallery-div img {
-    height: 350px;
-    width: 300px;
-    object-fit: cover;
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
   }
-  
-  #gallery-div .relative-image {
-    position: relative;
-    top: 40px;
-  }
-  
-  #comments-list {
-    background-image: url('../images/beach.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    min-height: 400px;
-  }
-  
-  .card1 {
-    display: flex;
-    flex-direction: column;
-    height: 35%;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 5px;
-  }
-  
-  .input-wrapper input {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #fff; 
-    outline: none;
-    background: transparent;
-    color: #fff;
-    padding: 5px 0;
-    font-size: 16px;
-  
-  }
-  .input-wrapper input::placeholder {
-    color: #fff; 
-  }
-  .input-wrapper input:focus {
-    border-color: black; 
-  }
-  @media (max-width: 768px) {
-    #gallery-div img {
-        height: 250px;
-        width: 100%;
-        object-fit: cover;
-    }
-    .relative-image {
-        position: relative !important;
-        top: auto !important;
-    }
-  
-  
-  }
-  @media (min-width: 768px) and (max-width: 991px) {
-  
-  }
-  
-  /* *{
-    outline: 1px solid red;
-  } */
-  
-  
-  .btn-container{
+}
+
+.btn-container {
   width: 110px;
   position: absolute;
   bottom: 2%;
   right: 5%;
   height: 80px;
-  
-  }
-  .plause{
+}
+
+.plause {
   border-radius: 50%;
   height: 50px;
   width: 50px;
   border-width: 3px;
-  }
-  
-  .mute{
+}
+
+.mute {
   position: relative;
   right: 4px;
-  }
-  
-  .position-relative .image-overlay {
+}
+
+.position-relative .image-overlay {
   position: absolute;
   top: 20%;
   left: 10%;
@@ -369,26 +150,26 @@ body{
   text-align: center;
   padding: 20px;
   border-radius: 30px;
-  }
-  
-  .position-relative:hover .image-overlay {
+}
+
+.position-relative:hover .image-overlay {
   opacity: 1;
-  }
-  
-  .overlay-title,
-  .overlay-text {
+}
+
+.overlay-title,
+.overlay-text {
   color: #fff;
   font-size: 24px;
   margin-bottom: 10px;
-  }
-  
-  .btn-outline-light {
+}
+
+.btn-outline-light {
   position: relative;
   overflow: hidden;
-  color: white; 
-  }
-  
-  .btn-outline-light::before {
+  color: white;
+}
+
+.btn-outline-light::before {
   content: '';
   position: absolute;
   top: 0;
@@ -396,42 +177,188 @@ body{
   width: 100%;
   height: 100%;
   background: linear-gradient(120deg, transparent, transparent, #cdd8e4);
-  transition: left 0.5s ease; 
+  transition: left 0.5s ease;
   z-index: 1;
-  }
-  
-  .btn-outline-light:hover::before {
+}
+
+.btn-outline-light:hover::before {
   left: 0;
-  }
-  
-  .btn-outline-light:hover span {
-  color: black; 
-  }
-  
-  .btn-outline-light span {
+}
+
+.btn-outline-light:hover span {
+  color: black;
+}
+
+.btn-outline-light span {
   position: relative;
   z-index: 2;
-  color: white; 
-  transition: color 0.5s ease; 
-  }
-  
-  
-  /* *{
+  color: white;
+  transition: color 0.5s ease;
+}
+
+.navbar-white {
+  background-color: #343a40 !important;
+  color: black !important;
+  transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+.navbar-white .navbar-nav .nav-link {
+  color: #fff !important;
+  border-bottom: 2px solid #fff;
+}
+
+#hero-div {
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+}
+
+#hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+#hero-div .hero-content {
+  position: relative;
+  top: 150px;
+  z-index: 1;
+  font-weight: bolder;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.0);
+}
+
+#hero-div .hero-content .btn-outline-light span {
+  text-shadow: none;
+}
+
+#hero-div h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#hero-div p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+#hero-div .btn-primary {
+  font-size: 1.2rem;
+}
+
+#about-me-div {
+  padding: 50px 0;
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#about-me-div .about-me-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+#about-me-div img {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+#about-me-div.parallax-div {
+  background-image: url('../images/paris.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#blogs-div.parallax-div {
+  background-image: url('../images/japan2.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#gallery-div img {
+  height: 350px;
+  width: 300px;
+  object-fit: cover;
+}
+
+#gallery-div .relative-image {
+  position: relative;
+  top: 40px;
+}
+
+#comments-list {
+  background-image: url('../images/beach.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  min-height: 400px;
+}
+
+.card1 {
+  display: flex;
+  flex-direction: column;
+  height: 35%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  color: #fff;
+  padding: 5px 0;
+  font-size: 16px;
+}
+
+.input-wrapper input::placeholder {
+  color: #fff;
+}
+
+.input-wrapper input:focus {
+  border-color: black;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Add specific styles for medium screens */
+}
+
+/* You can add more media queries or specific section styles as needed */
+
+/* General cleanup and optimization */
+/* *{
   outline: 1px solid red;
-  } */
-  .navbar-white {
-    background-color: #343a40 !important;
-    color: black !important;
-    transition: background-color 0.1s ease, color 0.1s ease;
-  }
-  .navbar-white .navbar-nav .nav-link {
-    color: #fff  !important;
-    border-bottom: 2px solid #fff;
-  
-  }
-  
-  /* .active-nav-link {
-    font-weight: bold;
-    font-size: xx-large;
-  } */
-  
+} */
+
+
+.nav-item.active .nav-link {
+  position: relative;
+  color: #ffffff; 
+  text-decoration: underline;
+}
+
+.nav-item.active .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px; 
+  background-color: #ffffff; 
+}

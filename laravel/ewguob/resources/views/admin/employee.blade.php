@@ -24,40 +24,10 @@
     </style>
 </head>
 <body>
-<header class="text-center">
-        <h1 class="mt-3 mb-2">Travel Admin Dashboard</h1>
-        <nav>
-            <ul class="nav nav-pills mb-3">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.bookings') }}">Bookings</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.destinations') }}">Destinations</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.users') }}">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.tracking') }}">Live tracking</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.employee') }}">Employees</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.feedback') }}">Feedback</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('logout') }}">Logout</a>
-                </li>
-                <li class="nav-item ml-auto">
-                    <button class="btn btn-sm btn-outline-dark" id="theme-toggle"><i class="fa fa-toggle-off"></i></button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<div class="sidebar">
+    @include('includes.adminheader')
+    </div>
+    <div class="content">
 
 <h1>Employee List</h1>
 
@@ -91,6 +61,8 @@
         @endforeach
     </tbody>
 </table>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

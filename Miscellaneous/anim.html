@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AnimeGenerator Pro</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #eaeaea;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #ff4081;
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background-color: #000;
+      margin-bottom: 20px;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      font-size: 1em;
+      background-color: #333;
+      border: 1px solid #444;
+      color: #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #ff4081;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 5px;
+      font-size: 0.9em;
+      background-color: #333;
+      border: 1px solid #444;
+      color: #ccc;
+      border-radius: 5px;
+    }
+
+    .loading {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
+
+    .loading::after {
+      content: '...';
+      animation: pulse 1.5s infinite;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>AnimeGenerator Pro</h1>
+    <div class="intro">
+      <p>Welcome to AnimeGenerator Pro, the fast and beautiful way to create realistic anime videos. Just describe your scene, choose your settings, and let our AI do the rest!</p>
+    </div>
+    <div class="video-container">
+      <video id="animeVideo" width="100%" height="100%" controls>
+        <source src="https://websim.ai/placeholder.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="controls">
+      <input type="text" id="prompt" placeholder="Describe your anime scene...">
+      <button onclick="generateVideo()">Generate</button>
+    </div>
+    <div class="options">
+      <select id="style">
+        <option value="shounen">Shounen</option>
+        <option value="shoujo">Shoujo</option>
+        <option value="seinen">Seinen</option>
+        <option value="mecha">Mecha</option>
+        <option value="slice-of-life">Slice of Life</option>
+      </select>
+      <select id="duration">
+        <option value="15">15 seconds</option>
+        <option value="30">30 seconds</option>
+        <option value="60">1 minute</option>
+      </select>
+      <select id="resolution">
+        <option value="720p">720p</option>
+        <option value="1080p">1080p</option>
+        <option value="4k">4K</option>
+      </select>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <script>
+    async function generateVideo() {
+      const prompt = document.getElementById('prompt').value;
+      const style = document.getElementById('style').value;
+      const duration = document.getElementById('duration').value;
+      const resolution = document.getElementById('resolution').value;
+
+      if (!prompt) {
+        alert('Please enter a description for your anime scene.');
+        return;
+      }
+
+      const status = document.getElementById('status');
+      status.innerHTML = '<div class="loading">Generating your anime video</div>';
+
+      try {
+        // Simulating a successful API response
+        const data = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve({ videoUrl: 'https://websim.ai/generated_anime_video.mp4' });
+          }, 5000); // Simulate 5 seconds delay for video generation
+        });
+
+        const videoElement = document.getElementById('animeVideo');
+        videoElement.src = data.videoUrl;
+        videoElement.style.display = 'block';
+
+        status.innerHTML = 'Your anime video is ready!';
+      } catch (error) {
+        console.error(error);
+        status.innerHTML = 'Error generating video. Please try again later.';
+      }
+    }
+  </script>
+</body>
+</html>
